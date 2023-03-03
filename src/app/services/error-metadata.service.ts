@@ -1,9 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ErrorHandler } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ErrorMetadataService {
+export class ErrorMetadataService implements ErrorHandler {
 
-  constructor() { }
+  public handleError(error: any): void{
+    const date = new Date();
+
+    console.error(
+      {
+        timeStamp: date.toISOString(),
+        message: error.message
+      }
+    );
+
+
+  }
+
 }
